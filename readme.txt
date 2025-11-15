@@ -5,16 +5,16 @@ iris_project/
 │   └── iris_processed.csv
 │
 ├── models/
-│   ├── logistic_regression.pkl
-│   ├── decision_tree.pkl
-│   ├── svm.pkl
+│   ├── model_LR.pkl
+│   ├── model_DT.pkl
+│   ├── model_SVM.pkl
 │   └── scaler.pkl
 │
 ├── src/
 │   ├── prepare_data.py (done)
-│   ├── train_LR.py
-│   ├── train_decision_tree.py
-│   ├── train_SVM.py
+│   ├── train_LR.py (done)
+│   ├── train_decision_tree.py (done)
+│   ├── train_SVM.py 
 │   ├── predict_LR.py
 │   ├── predict_decision_tree.py
 │   ├── predict_SVM.py
