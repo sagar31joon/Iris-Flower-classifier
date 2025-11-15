@@ -11,7 +11,7 @@ iris_project/
 │   └── scaler.pkl
 │
 ├── src/
-│   ├── prepare_data.py
+│   ├── prepare_data.py (done)
 │   ├── train_LR.py
 │   ├── train_decision_tree.py
 │   ├── train_SVM.py
@@ -23,3 +23,7 @@ iris_project/
 │
 └── main.py
 
+
+* Scaler (sc) used for :
+    1. Preventing model to become biased (on long range features and ignore small range features or visa-versa).
+    2. Acts as value transformer for raw user inputs to scaled values (on which model is trained upon).

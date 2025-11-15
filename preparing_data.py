@@ -9,7 +9,7 @@ from sklearn.model_selection import train_test_split
 
 #iris_dataset['train'].to_csv("iris_dataset.csv") #saving dataset as CSV file
 
-df = pd.read_csv("dataset/iris_dataset.csv")
+df = pd.read_csv("dataset/iris_raw.csv")
 print(df)
 #print(df.head()) 
 print(df.info()) 
