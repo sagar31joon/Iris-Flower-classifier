@@ -1,11 +1,11 @@
-#Decision Tree model
+#Decision Tree model with scaler object
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 import pickle
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score, confusion_matrix, classification_report
 
 df=pd.read_csv("dataset/iris_processed.csv") #loading data
 print(df.head())
@@ -29,11 +29,23 @@ model_DT = DecisionTreeClassifier() #initialising model
 model_DT.fit(x_train, y_train) #training model
 
 predict = model_DT.predict(x_test) #testing
-accuracy = accuracy_score(y_test, predict)
 for i in range(len(predict)): #loop for results
     print(y_test[i], predict[i])
-print("Decision Tree Classifier accuracy : ", accuracy*100)
 
-with open("models/model_DT.pkl", "wb") as f:
-    pickle.dump(model_DT, f)
-print ("Decision Tree Classifier model saved as 'model_DT.pkl'")
+accuracy = accuracy_score(y_test, predict) #Accuracy
+cm = confusion_matrix(y_test, predict) #Confusion Matrix
+report = classification_report(y_test, predict, target_names=["Iris-setosa", "Iris-versicolor", "Iris-virginica"]) #Classification report
+print("\nDT Accuracy :", accuracy*100)
+print("\nDT Confusion Matrix : \n", cm)
+print("\nDT Classification Report : \n", report)
+
+model_save = input("Do you want to save this SVC model ? (Y/N)")
+match model_save:
+    case ("Y" | "y"):
+        with open("models/model_DT.pkl", "wb") as f: #saving the DT model as model_DT.pkl
+            pickle.dump(model_DT, f)
+        print ("Decision Tree Classifier model saved as 'model_DT.pkl'")
+        print("Model saved as 'model_DT.pkl")
+    case ("N" | "n"):
+        print("Very well")
+

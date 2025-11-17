@@ -127,7 +127,7 @@ pip install -r requirements.txt
 ### 2. Prepare the dataset
 ```
 python3 src/prepare_data.py
-> ⚠️ If you want to retrain using your own dataset, adjust the file path inside `prepare_data.py`.  
+> ⚠️ If you want to retrain using your own dataset, adjust the file path inside `prepare_data.py` and training scripts.  
 > Renaming the processed dataset file is optional.
 ```
 
