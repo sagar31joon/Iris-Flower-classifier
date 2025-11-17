@@ -168,5 +168,5 @@ Choose a model:
 
 ## 📝 License
 This project is for educational and practice purposes.  
-Feel free to fork and modify it.
+Feel free to use it.
 
