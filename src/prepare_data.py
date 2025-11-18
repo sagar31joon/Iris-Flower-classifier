@@ -10,8 +10,6 @@ import os
 
 #iris_dataset = load_dataset("sasageooo/iris-flower-classification") #loading dataset from hugging face
 
-#iris_dataset['train'].to_csv("iris_dataset.csv") #saving dataset as CSV file
-
 dataset_path = "dataset/iris_raw.csv"
 df = pd.read_csv(dataset_path)
 original_dataset_name = os.path.splitext(os.path.basename(dataset_path))[0]
@@ -29,7 +27,7 @@ print("\nEncoded dataset : ")
 print(df.head())
 print (df.shape) #rows x column numbers
 
-df.to_csv("dataset/encoded.csv", index=False) #creating processed dataset file for model
+df.to_csv("dataset/encoded.csv", index=False) #creating encoded dataset file for model
 
 data_value = df.values #slicing dataset
 x = data_value[:, 0:4]

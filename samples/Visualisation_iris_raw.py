@@ -7,8 +7,6 @@ from datasets import load_dataset
 
 #iris_dataset = load_dataset("sasageooo/iris-flower-classification") #loading dataset from hugging face
 
-#iris_dataset['train'].to_csv("iris_dataset.csv") #saving dataset as CSV file
-
 df = pd.read_csv("dataset/iris_raw.csv")
 print(df)
 #print(df.head()) 
