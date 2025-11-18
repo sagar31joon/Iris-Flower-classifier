@@ -10,9 +10,9 @@ with open("models/model_LR.pkl", "rb") as f: #loading Logistic Regression model
 
 #user inputs : 
 sepal_length = float(input("Enter Sepal length : "))
-sepal_width = float(input("Enter petal width : "))
-petal_length = float(input("Enter petal_length : "))
-petal_width = float(input("Enter petal width : "))
+sepal_width = float(input("Enter Sepal width : "))
+petal_length = float(input("Enter Petal length : "))
+petal_width = float(input("Enter Petal width : "))
 
 #converting to array
 user_data = np.array([[sepal_length, sepal_width, petal_length, petal_width]])

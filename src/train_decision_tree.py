@@ -1,4 +1,4 @@
-#Decision Tree model with scaler object
+#Decision Tree 
 import numpy as np
 import pandas as pd
 import pickle

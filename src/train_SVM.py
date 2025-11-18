@@ -1,4 +1,4 @@
-# Suport Vector Model with scaler object
+# Suport Vector Model 
 import numpy as np
 import pandas as pd
 import pickle

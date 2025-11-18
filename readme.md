@@ -1,23 +1,31 @@
-# Iris Classification System
 
-A clean, modular, end-to-end Machine Learning project that classifies Iris flower species using three different ML models:
+# IRIS-ML-PIPELINE
 
-- Logistic Regression  (LR)
-- Decision Tree Classifier  
-- Support Vector Classifier (SVC)
+A fully modular, end-to-end Machine Learning pipeline for classifying **Iris flower species** using three classical ML algorithms:
 
-This project includes complete preprocessing, model training, model saving/loading, and a CLI-based prediction system through `main.py`.
+- **Logistic Regression**
+- **Decision Tree Classifier**
+- **Support Vector Classifier (SVC)**
+
+This project includes **full preprocessing**, **training**, **evaluation**, **model comparison**, and a **CLI-based prediction system**.  
+All modules are cleanly separated for reusability and easy future expansion.
 
 ---
 
 ## 📁 Project Structure
 
 ```
-iris-classification-system/
+Iris-ML-Pipeline/
 │
 ├── dataset/
 │   ├── iris_raw.csv
-│   └── iris_processed.csv
+│   ├── encoded.csv
+│   ├── x_train.npy
+│   ├── x_test.npy
+│   ├── y_train.npy
+│   ├── y_test.npy
+│   ├── dataset_name.txt
+│   └── model_comparison_iris_raw.csv
 │
 ├── models/
 │   ├── scaler.pkl
@@ -32,78 +40,116 @@ iris-classification-system/
 │   ├── train_SVM.py
 │   ├── predict_LR.py
 │   ├── predict_decision_tree.py
-│   └── predict_SVM.py
+│   ├── predict_SVM.py
+│   └── model_compare.py
 │
 ├── samples/
 │   └── Visualisation_iris_raw.py
 │
 ├── main.py
-├── README.md
-└── requirements.txt
+├── requirements.txt
+└── README.md
 ```
 
 ---
 
 ## 🚀 Features
 
-### ✔ End-to-End ML Pipeline
-- Load raw dataset  
-- Encode labels  
-- Scale features  
-- Save processed dataset  
-
-### ✔ Single Scaler for All Models
-- Fitted on training data only  
-- Saved as `scaler.pkl`  
-- Loaded by all training/prediction scripts  
-
-### ✔ Three Independently Trained Models
-Each model is:
-- Trained  
-- Evaluated  
-- Saved as a `.pkl` file  
-
-### ✔ Prediction Scripts
-Each model has its own prediction file:
-- Accepts 4 user inputs  
-- Scales input using saved scaler  
-- Loads model and predicts species  
-
-### ✔ Main CLI Program
-`main.py` lets the user choose:
-- Logistic Regression  
-- Decision Tree  
-- SVC  
-- Exit  
-
-Runs the corresponding prediction script.
+### ✔ Complete Preprocessing Pipeline  
+- Reads raw CSV (`iris_raw.csv`)
+- Label-encodes species
+- Train/test split (configurable)
+- Feature scaling via `StandardScaler`
+- Saves:
+  - Encoded dataset
+  - Scaled `.npy` arrays
+  - `scaler.pkl`
+  - Dataset name text file
 
 ---
 
-## 📊 Dataset Visualization (Optional)
+### ✔ Three ML Models with Evaluation  
+Each model script computes:
 
-The `samples/Visualisation_iris_raw.py` script is used for Exploratory Data Analysis (EDA).  
-It generates a Seaborn pairplot to visualize relationships between features and species.
+- **Training time**
+- **Batch inference time**
+- **Single-sample inference time**
+- **Accuracy**
+- **Confusion Matrix**
+- **Classification Report**
 
-### ▶ Run the visualization script
+All trained models are saved in `/models/` as:
+
+```
+model_LR.pkl
+model_DT.pkl
+model_SVC.pkl
+```
+
+---
+
+### ✔ Model Comparison Script  
+`model_compare.py`:
+
+- Loads all 3 trained models
+- Evaluates on the same test set
+- Prints structured comparison table
+- Saves CSV as:
+
+```
+model_comparison_<dataset_name>.csv
+```
+
+Example:
+```
+model_comparison_iris_raw.csv
+```
+
+---
+
+### ✔ CLI-Based Prediction System  
+Run `main.py`:
+
+```
+1. Logistic Regression
+2. Decision Tree Classifier
+3. Support Vector Classifier
+4. Exit
+```
+
+The chosen script:
+
+- Takes 4 numeric inputs  
+- Scales using `scaler.pkl`  
+- Predicts species  
+- Decodes class number → species name  
+
+---
+
+### ✔ (Optional) Dataset Visualization  
+`Visualisation_iris_raw.py` performs simple EDA:
+
+- Head of dataset  
+- Info & statistics  
+- Seaborn pairplot showing feature relationships  
+
+Run:
 ```
 python3 samples/Visualisation_iris_raw.py
 ```
-
-This helps in understanding how separable the Iris species are and why certain models perform well on this dataset.
 
 ---
 
 ## 🧠 Models Used
 
-### 1. Logistic Regression
-Simple yet effective linear classifier.
+### 1. Logistic Regression  
+Lightweight baseline classifier.
 
-### 2. Decision Tree Classifier
-Non-linear model with hierarchical decision rules.
+### 2. Decision Tree Classifier  
+Non-linear, interpretable classifier.
 
-### 3. Support Vector Classifier (SVC)
-Margin-based classifier suitable for multi-class problems.
+### 3. Support Vector Classifier (SVC)  
+Margin-based classifier suitable for smaller datasets.
 
 ---
 
@@ -112,43 +158,54 @@ Margin-based classifier suitable for multi-class problems.
 - NumPy  
 - Pandas  
 - Scikit-learn  
+- Matplotlib  
+- Seaborn  
 - Pickle  
-- Matplotlib
-- Seaborn
+
 ---
 
 ## 🏃‍♂️ How to Run
 
 ### 1. Install dependencies
-```
+```bash
 pip install -r requirements.txt
 ```
 
 ### 2. Prepare the dataset
-```
+```bash
 python3 src/prepare_data.py
-> ⚠️ If you want to retrain using your own dataset, adjust the file path inside `prepare_data.py` and training scripts.  
-> Renaming the processed dataset file is optional.
 ```
+This will:
+- Encode dataset  
+- Scale features  
+- Save training & testing arrays  
+- Save scaler  
+- Save dataset name  
 
 ### 3. Train all models
-```
+```bash
 python3 src/train_LR.py
 python3 src/train_decision_tree.py
 python3 src/train_SVM.py
 ```
 
-### 4. Run the main program
+### 4. Run model comparison (optional)
+```bash
+python3 src/model_compare.py
 ```
+
+### 5. Start CLI prediction
+```bash
 python3 main.py
 ```
 
 ---
 
-## 🔍 Example Output
+## 🔍 Example CLI Output
 
 ```
 🌸 IRIS FLOWER CLASSIFICATION SYSTEM 🌸
+---------------------------------------
 
 Choose a model:
 1. Logistic Regression
@@ -160,13 +217,14 @@ Choose a model:
 ---
 
 ## 📌 Notes
-- The scaler is saved once and reused across all models for consistency.  
-- All training scripts overwrite previous model files when run again.  
-- The prediction scripts work independently and can be integrated into any front-end or API later.
+- Re-running training scripts will overwrite previous models (if user chooses to confirm the save).  
+- Comparison CSV names are generated dynamically based on original dataset name.  
+- You can plug in any dataset with the same structure (4 features + label).  
+- Scripts are modular and can be reused for other ML projects.  
 
 ---
 
-## 📝 License
-This project is for educational and practice purposes.  
-Feel free to use it.
+## 📝 License  
+This project is made for educational and experimental purposes.  
+Feel free use it.
 

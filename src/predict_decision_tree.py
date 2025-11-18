@@ -10,9 +10,9 @@ with open("models/model_DT.pkl", "rb") as f: #loading DT model
 
 #User inputs
 sepal_length = float(input("Enter Sepal length : "))
-sepal_width = float(input("Enter petal width : "))
-petal_length = float(input("Enter petal_length : "))
-petal_width = float(input("Enter petal width : "))
+sepal_width = float(input("Enter Sepal width : "))
+petal_length = float(input("Enter P1etal length : "))
+petal_width = float(input("Enter Petal width : "))
 
 #converting to array
 user_data = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
@@ -24,6 +24,6 @@ user_data_scaled = scaler.transform(user_data)
 prediction = model_DT.predict(user_data_scaled)[0]
 
 #decoding
-species_maping = species_maping = {0: "Iris-setosa", 1: "Iris-versicolor", 2: "Iris-virginica"}
+species_maping = {0: "Iris-setosa", 1: "Iris-versicolor", 2: "Iris-virginica"}
 print("Model used : Decision Tree Classifier")
 print("Predicted Species : ", species_maping[prediction])
