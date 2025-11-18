@@ -8,6 +8,7 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 import pickle
 import time
+import os
 
 # Loading preprocessed data
 x_train = np.load("dataset/x_train.npy")
@@ -110,6 +111,16 @@ results = [
 ]
 
 # Exporting comparision table
-df = pd.DataFrame(results)
-df.to_csv("dataset/model_comparision.csv", index = False)
-print("\nSaved comparison as model_comparison.csv")
+
+comparision_save = input("Do you want to save comparision as csv file? (Y/N)") # saving comparision file
+match comparision_save:
+    case ("Y" | "y"):
+        df = pd.DataFrame(results)
+        with open("dataset/dataset_name.txt") as f:
+            dataset_name = f.read().strip()
+        output_path = f"dataset/model_comparison_{dataset_name}.csv"
+        df.to_csv(output_path, index = False)
+        print(f"\nSaved comparison as model_comparison_{dataset_name}.csv")
+        
+    case ("N" | "n"):
+        print("Very Well")

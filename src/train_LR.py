@@ -1,4 +1,4 @@
-#Logistic Refression model and sclaler model initialiser
+#Logistic Refression model
 import numpy as np
 import pandas as pd
 import pickle

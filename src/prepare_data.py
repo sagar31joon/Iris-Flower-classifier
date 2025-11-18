@@ -5,12 +5,15 @@ from sklearn.preprocessing import LabelEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 import pickle
+import os
 
 #iris_dataset = load_dataset("sasageooo/iris-flower-classification") #loading dataset from hugging face
 
 #iris_dataset['train'].to_csv("iris_dataset.csv") #saving dataset as CSV file
 
-df = pd.read_csv("dataset/iris_raw.csv")
+dataset_path = "dataset/iris_raw.csv"
+df = pd.read_csv(dataset_path)
+original_dataset_name = os.path.splitext(os.path.basename(dataset_path))[0]
 #print(df)
 print("\nRaw dataset : ")
 print(df.head())
@@ -66,3 +69,5 @@ match scaled_array_save:
         print(" - y_test.npy")
     case ("N" | "n"): # exiting save
         print("Very well")
+with open("dataset/dataset_name.txt", "w") as f:
+    f.write(original_dataset_name)

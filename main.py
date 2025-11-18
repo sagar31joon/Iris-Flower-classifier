@@ -2,7 +2,7 @@
 import os
 
 def main():
-    print("\n🌸 IRIS FLOWER CLASSIFICATION SYSTEM 🌸")
+    print("\n🌸 IRIS FLOWERNCLASSIFICATION SYSTEM 🌸")
     print("---------------------------------------")
     print("Choose a model for prediction : \n")
     print("1. Logistic Regression")
